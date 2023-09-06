@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	
+	<definition name="mainTemplate" template="/WEB-INF/views/mainTemplate.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/tiles/header.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp"/>
+	</definition>
+	
+	<definition name="notice/*" extends="mainTemplate"> <!-- notice로 해당하는 뭔가 실행되면 아래가 실행됨 -->
+		<put-attribute name="content" value="/WEB-INF/views/noticeboard/{1}.jsp"/><!-- notice뒤에 오는게 {1}에 매핑됨 -->
+	</definition>
+	
+	<definition name="loginTemplate" template="/WEB-INF/views/loginTemplate.jsp"/>
+	
+	<definition name="conn/*" extends="loginTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/noticeboard/{1}.jsp"/>
+	</definition>
+	
+</tiles-definitions>
