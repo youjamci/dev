@@ -28,6 +28,13 @@
 		<beans:property name="order" value="1"/>
 	</beans:bean>
 	
+	<!-- pdf 설정 -->
+	<beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+	    <beans:property name="order" value="0" />
+	</beans:bean>
+	
+	<!-- pdf 설정 끝 -->
+	
 	<beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
 		<beans:property name="definitions">
 			<beans:list>
