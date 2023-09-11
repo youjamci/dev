@@ -1,10 +1,12 @@
 package kr.or.ddit.service.impl;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.ddit.mapper.MemberMapper;
 import kr.or.ddit.service.IMemberService;
@@ -16,9 +18,10 @@ public class MemberServiceImpl implements IMemberService {
 
 	@Inject
 	private MemberMapper mapper;
-	
+
+	@Transactional(rollbackFor = {IOException.class, Exception.class})
 	@Override
-	public void register(MemberVO member) {
+	public void register(MemberVO member) throws IOException {
 		// 1. 회원정보를 등록
 		mapper.create(member);
 		
@@ -26,6 +29,16 @@ public class MemberServiceImpl implements IMemberService {
 		MemberAuth memberAuth = new MemberAuth();
 		memberAuth.setUserNo(member.getUserNo());
 		memberAuth.setAuth("ROLE_USER"); // 기본 사용자 등급
+		
+		// 에러를 발생(롤백 처리가 되지 않았다.)
+		if(true) {
+			throw new IOException();
+		}
+
+		// 에러를 발생(롤백 처리가 되나?)
+//		if(true) {
+//			throw new NullPointerException();
+//		}
 		
 		mapper.createAuth(memberAuth);
 	}

@@ -15,7 +15,7 @@
 		<table>
 			<tr>
 				<td>제목</td>
-				<td><input type="text" name="title" id="title" value="${board.title }"/></td>
+				<td><input type="text" name="title2" id="title" value="${board.title2 }"/></td>
 			</tr>
 			<tr>
 				<td>작성자</td>
@@ -33,7 +33,7 @@
 			<c:set var="btnText" value="수정"/>
 		</c:if>
 		<button type="button" id="btnRegister">${btnText }</button>
-		<button type="button" id="btnList">목록</button>
+		<button type="button" onclick="location.href='/crud/board/list'" id="btnList">목록</button>
 	</div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
@@ -44,14 +44,14 @@ $(function(){
 	var btnList = $("#btnList");
 	
 	btnRegister.on("click", function(){
-		var title = $("#title").val();
+// 		var title = $("#title").val();
 		var writer = $("#writer").val();
 		var content = $("#content").val();
 		
-		if(title == null || title == ""){
-			alert("제목을 입력해주세요");
-			return false;
-		}
+// 		if(title == null || title == ""){
+// 			alert("제목을 입력해주세요");
+// 			return false;
+// 		}
 		
 		if(writer == null || writer == ""){
 			alert("작성자를 입력해주세요");
