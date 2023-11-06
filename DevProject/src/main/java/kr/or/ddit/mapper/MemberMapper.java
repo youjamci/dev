@@ -13,4 +13,6 @@ public interface MemberMapper {
 	public void update(MemberVO member);
 	public void deleteAuth(int userNo);
 	public void delete(int userNo);
+	
+//	public MemberVO readByUserId(String username);
 }

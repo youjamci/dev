@@ -6,7 +6,9 @@ public interface LoginMapper {
 	public DDITMemberVO loginCheck(DDITMemberVO member);
 	public DDITMemberVO idCheck(String memId);
 	public int signup(DDITMemberVO memberVO);
-//	public DDITMemberVO findId(DDITMemberVO memberVO);
+//	public DDITMemberVO findId(DDITMemberVO memberVO);.
 	public DDITMemberVO findId(DDITMemberVO member);
 	public DDITMemberVO findPw(DDITMemberVO member);
+	public DDITMemberVO readByUserId(String username);
+	public void signupAuth(int memNo);
 }

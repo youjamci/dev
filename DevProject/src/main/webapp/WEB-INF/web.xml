@@ -6,7 +6,9 @@
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/spring/root-context.xml</param-value>
+		<param-value>/WEB-INF/spring/root-context.xml
+			/WEB-INF/spring/security-context.xml
+		</param-value>
 	</context-param>
 	
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
@@ -85,6 +87,8 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	
+	
+	
 	<!-- 
 		MultipartFilter 적용
 		- MultipartFilter의 역할은 들어온 요청이 mulitpart/form-data 유형의 요청인지를 확인해
@@ -129,5 +133,14 @@
 <!-- 	</error-page> -->
 	<!-- 5. 기본 에러 페이지 설정(예외 처리) 끝 -->
 	
+	<!-- 서블릿 필터 클래스를 서블릿 컨테이너에 등록함(스프링 시큐리티 관련 필터 등록) --><!-- 꼭 파일 아래에 정의하기 -->
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 	
 </web-app>
